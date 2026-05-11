@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dynamic Image Gallery</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Dynamic Image Gallery</h1>
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="landscape">Landscape</button>
+      <button class="filter-btn" data-filter="portrait">Portrait</button>
+      <button class="filter-btn" data-filter="architecture">Architecture</button>
+    </div>
+  </header>
+
+  <main class="gallery">
+    <!-- Example of an image card -->
+    <div class="card landscape">
+      <img src="C:\Users\Rasool\Downloads\Copilot_20260511_124659.png" alt="Landscape 1">
+      <div class="card-content">
+        <h3>Mountain View</h3>
+        <span class="tag">Landscape</span>
+      </div>
+      <div class="overlay">
+        <p>A breathtaking view of the mountains at sunrise.</p>
+      </div>
+    </div> 
+
+    <div class="card portrait">
+      <img src="C:\Users\Rasool\Downloads\Copilot_20260511_125657.png" alt="Portrait 1">
+      <div class="card-content">
+        <h3>Smiling Faces</h3>
+        <span class="tag">Portrait</span>
+      </div>
+      <div class="overlay">
+        <p>A candid portrait capturing joy and laughter.</p>
+      </div>
+    </div>
+
+    <div class="card architecture">
+      <img src="C:\Users\Rasool\Downloads\Copilot_20260511_130251.png" alt="Architecture 1">
+      <div class="card-content">
+        <h3>Modern Building</h3>
+        <span class="tag">Architecture</span>
+      </div>
+      <div class="overlay">
+        <p>Minimalist design with sleek glass panels.</p>
+      </div>
+    </div>
+
+    <!-- Add 9 more cards with mixed categories -->
+  </main>
+
+  <script>
+    // Filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const filter = button.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.classList.contains(filter)) {
+            card.style.display = 'block';
+            card.classList.add('show');
+          } else {
+            card.classList.remove('show');
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
